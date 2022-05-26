@@ -33,15 +33,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.session:spring-session-core'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     compileOnly 'org.projectlombok:lombok'
-//    runtimeOnly 'org.hsqldb:hsqldb'
-    runtimeOnly 'org.apache.derby:derby'
+    runtimeOnly 'org.hsqldb:hsqldb'
     implementation 'org.apache.derby:derbytools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 test {
