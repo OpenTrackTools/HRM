@@ -48,3 +48,28 @@ body {
     z-index: 1;
     content: "";
 }
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 16.45rem;
+    overflow: auto;
+}
+
+.app-navbar {
+    margin-left: 16.45rem !important;
+}
+
+.sidebar-container {
+    position: relative;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+.sidebar-container-footer-offset {
+    height: 100%;
+    padding-bottom: 4.25rem;
+}

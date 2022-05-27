@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -48,7 +47,7 @@ public class WebSecurityConfiguration {
             .antMatchers(NON_SECURE_ENDPOINTS).permitAll()
             .antMatchers(WEB_RESOURCE_ENDPOINTS).permitAll()
             .anyRequest().authenticated())
-        .formLogin().loginPage("/signin")
+        .formLogin().loginPage("/signin").loginProcessingUrl("/signin").usernameParameter("login").passwordParameter("password")
         .and()
         .logout().logoutUrl("/signout").clearAuthentication(true)
         .and()
@@ -62,7 +61,6 @@ public class WebSecurityConfiguration {
     Map<String, PasswordEncoder> encoders = new HashMap<>();
     Argon2PasswordEncoder defaultEncoder = new Argon2PasswordEncoder(16, 32, 1, 4096, 7);
     encoders.put("argon2id", defaultEncoder);
-//    encoders.put("bcrypt", new BCryptPasswordEncoder());
     DelegatingPasswordEncoder delegatingPasswordEncoder = new DelegatingPasswordEncoder("argon2id", encoders);
     delegatingPasswordEncoder.setDefaultPasswordEncoderForMatches(defaultEncoder);
     return delegatingPasswordEncoder;

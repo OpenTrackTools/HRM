@@ -39,7 +39,7 @@ public class ApplicationUserDetails implements UserDetails {
   
   @Override
   public boolean isAccountNonExpired() {
-    return userEntity.isDeleted();
+    return true;
   }
   
   @Override
@@ -49,11 +49,11 @@ public class ApplicationUserDetails implements UserDetails {
   
   @Override
   public boolean isCredentialsNonExpired() {
-    return false;
+    return true;
   }
   
   @Override
   public boolean isEnabled() {
-    return false;
+    return !userEntity.isDeleted();
   }
 }

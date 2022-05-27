@@ -2,18 +2,17 @@ package org.opentracktools.domain.models.commons;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  *
  * @author Arpan Mukhopadhyay
  */
 @MappedSuperclass
-@NoArgsConstructor
 @Getter
 @Setter
 public abstract class BaseEntity implements Serializable {
@@ -40,4 +39,8 @@ public abstract class BaseEntity implements Serializable {
   
   @Column(name = "is_deleted")
   private boolean deleted = false;
+  
+  public BaseEntity() {
+    this.objectId = UUID.randomUUID().toString().replace("-", "");
+  }
 }
